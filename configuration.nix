@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      <home-manager/nixos>
     ];
 
   # Bootloader.
@@ -91,9 +92,9 @@
     ];
   };
 
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   virtualisation.docker.enable = true;
@@ -126,7 +127,26 @@
    pkgs.gnome.gnome-mines
    pkgs.neofetch
    pkgs.partition-manager
+   pkgs.arianna
+   pkgs.libsForQt5.kdeconnect-kde
   ];
+
+  home-manager.users.fishnak = { pkgs, ... }: {
+   home.stateVersion = "23.05";
+   programs.vscode = {
+    enable = true;
+    package = pkgs.vscodium;
+    extensions = with pkgs.vscode-extensions; [
+        matklad.rust-analyzer
+        ms-python.python
+        ms-vscode.cpptools
+	viktorqvarfordt.vscode-pitch-black-theme
+	divyanshuagrawal.competitive-programming-helper
+        #ms-vscode-remote.remote-ssh
+      ];
+   }; 
+  };
+  home-manager.useGlobalPkgs = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
