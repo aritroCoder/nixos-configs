@@ -129,6 +129,9 @@
    pkgs.partition-manager
    pkgs.arianna
    pkgs.libsForQt5.kdeconnect-kde
+   pkgs.libreoffice
+   pkgs.xournalpp
+   pkgs.maestral
   ];
 
   home-manager.users.fishnak = { pkgs, ... }: {
