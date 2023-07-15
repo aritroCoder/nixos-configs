@@ -132,8 +132,9 @@
    pkgs.libreoffice
    pkgs.xournalpp
    pkgs.maestral
+   docker-compose
   ];
-
+  
   home-manager.users.fishnak = { pkgs, ... }: {
    home.stateVersion = "23.05";
    programs.vscode = {
